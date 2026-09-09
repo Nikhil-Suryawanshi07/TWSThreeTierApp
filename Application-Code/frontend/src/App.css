@@ -1,69 +1,649 @@
-.app {
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%, #263c72 0%, transparent 35%),
+        radial-gradient(circle at 85% 80%, #351b58 0%, transparent 35%),
+        #080d1d;
+    color: white;
+}
+
+/* =========================
+   MAIN GAME SCREEN
+========================= */
+
+.game-app {
+    min-height: 100vh;
+    padding: 35px 7%;
+    background:
+        linear-gradient(
+            rgba(5, 10, 25, 0.65),
+            rgba(5, 10, 25, 0.85)
+        );
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.game-header {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.game-title {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #ffd166;
+    text-shadow:
+        0 0 10px rgba(255, 209, 102, 0.4),
+        0 0 25px rgba(255, 209, 102, 0.15);
+}
+
+.game-header p {
+    margin: 5px 0 0;
+    color: #9da9c8;
+    font-size: 15px;
+}
+
+.level-box {
+    min-width: 110px;
+    padding: 12px 20px;
+    text-align: center;
+    border: 2px solid #ffd166;
+    border-radius: 14px;
+    background: rgba(20, 28, 55, 0.9);
+    box-shadow: 0 0 25px rgba(255, 209, 102, 0.15);
+}
+
+.level-box span {
+    display: block;
+    font-size: 11px;
+    color: #9da9c8;
+    letter-spacing: 2px;
+}
+
+.level-box strong {
+    display: block;
+    font-size: 30px;
+    color: #ffd166;
+}
+
+/* =========================
+   PLAYER CARD
+========================= */
+
+.player-card {
+    max-width: 1100px;
+    margin: auto;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    background: rgba(15, 24, 50, 0.95);
+    border: 1px solid #304b80;
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.45),
+        inset 0 0 30px rgba(48, 91, 160, 0.08);
+}
+
+.player-avatar {
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 40px;
+
+    border-radius: 50%;
+    border: 3px solid #7c5cff;
+
+    background: #18264b;
+
+    box-shadow:
+        0 0 15px rgba(124, 92, 255, 0.6),
+        inset 0 0 15px rgba(124, 92, 255, 0.15);
+}
+
+.player-info {
+    flex: 1;
+}
+
+.player-info h2 {
+    margin: 0 0 12px;
+    font-size: 22px;
+}
+
+.player-info span {
+    color: #8e9bbd;
+    font-size: 12px;
+}
+
+/* XP BAR */
+
+.xp-bar {
+    height: 12px;
+    width: 100%;
+    max-width: 600px;
+
+    background: #080d19;
+    border-radius: 20px;
+    overflow: hidden;
+
+    border: 1px solid #304268;
+    margin-bottom: 7px;
+}
+
+.xp-progress {
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #7c3aed,
+        #a855f7,
+        #c084fc
+    );
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 12px #8b5cf6,
+        0 0 25px rgba(139, 92, 246, 0.4);
+
+    transition: width 0.5s ease;
+}
+
+/* SCORE */
+
+.score-box {
+    min-width: 150px;
+    padding-left: 25px;
+
+    text-align: center;
+
+    border-left: 1px solid #34446d;
+}
+
+.score-box span {
+    display: block;
+    color: #9da9c8;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.score-box strong {
+    display: block;
+    margin-top: 5px;
+
+    font-size: 30px;
+    color: #ffd166;
+}
+
+/* =========================
+   QUEST BOARD
+========================= */
+
+.quest-board {
+    max-width: 1100px;
+    margin: 30px auto;
+
+    padding: 26px !important;
+
+    background: rgba(10, 18, 39, 0.97) !important;
+
+    border: 1px solid #304b80;
+    border-radius: 20px !important;
+
+    color: white !important;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 40px rgba(40, 75, 130, 0.08) !important;
+}
+
+/* QUEST HEADER */
+
+.quest-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.quest-header h2 {
+    margin: 0;
+
+    font-size: 23px;
+    letter-spacing: 1px;
+}
+
+.quest-count {
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #5424a8,
+        #7c3aed
+    );
+
+    font-size: 11px;
+    font-weight: bold;
+
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.35);
+}
+
+/* =========================
+   ADD QUEST
+========================= */
+
+.quest-form {
+    display: flex;
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+/* Material UI input */
+
+.quest-input {
+    flex: 1;
+
+    background: #080f23;
+    border-radius: 10px;
+}
+
+.quest-input .MuiOutlinedInput-root {
+    color: white;
+    background: #080f23;
+}
+
+.quest-input .MuiOutlinedInput-root fieldset {
+    border-color: #304b80;
+}
+
+.quest-input .MuiOutlinedInput-root:hover fieldset {
+    border-color: #647dcc;
+}
+
+.quest-input .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: #8b5cf6;
+}
+
+.quest-input input::placeholder {
+    color: #7786aa;
+    opacity: 1;
+}
+
+/* ADD BUTTON */
+
+.add-quest-btn {
+    min-width: 150px !important;
+    border-radius: 10px !important;
+
+    color: white !important;
+    font-weight: bold !important;
+
+    background: linear-gradient(
+        135deg,
+        #6d28d9,
+        #9333ea
+    ) !important;
+
+    box-shadow:
+        0 5px 20px rgba(124, 58, 237, 0.35) !important;
+
+    transition: 0.2s !important;
+}
+
+.add-quest-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 25px rgba(124, 58, 237, 0.55) !important;
+}
+
+/* =========================
+   QUEST LIST
+========================= */
+
+.quests-list {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    gap: 12px;
 }
 
-.app-header {
-    background-color: #282c34;
+/* QUEST ITEM */
+
+.quest-item {
+    display: flex;
+    align-items: center;
+
+    min-height: 78px;
+    padding: 12px !important;
+
+    background: #131e3a !important;
+
+    border: 1px solid #294575;
+
+    border-radius: 13px !important;
+
+    color: white !important;
+
+    box-shadow: none !important;
+
+    transition: 0.2s ease;
+}
+
+.quest-item:hover {
+    transform: translateX(5px);
+
+    border-color: #7958ff;
+
+    box-shadow:
+        0 5px 25px rgba(124, 92, 237, 0.15) !important;
+}
+
+/* NUMBER */
+
+.quest-number {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 12px;
+
+    border-radius: 10px;
+
+    background: #1b2d54;
+
+    color: #8fb7ff;
+
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* ICON */
+
+.quest-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 14px;
+
+    border-radius: 10px;
+
+    background: #202e55;
+
+    font-size: 22px;
+}
+
+/* TEXT */
+
+.quest-content {
+    flex: 1;
+}
+
+.quest-text {
+    font-size: 17px;
+    font-weight: bold;
+
     color: white;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 1.5rem;
+
+    margin-bottom: 5px;
 }
 
-.main-content {
-    flex-grow: 1;
+.quest-text.completed {
+    text-decoration: line-through;
+    color: #6e7b98;
+}
+
+.quest-type {
+    display: inline-block;
+
+    padding: 3px 9px;
+
+    border-radius: 10px;
+
+    background: rgba(124, 58, 237, 0.2);
+
+    color: #b993ff;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.completed-quest {
+    opacity: 0.65;
+    border-color: #1c7c61;
+}
+
+/* CHECKBOX */
+
+.complete-checkbox {
+    color: #00e5a0 !important;
+
+    margin-right: 5px !important;
+}
+
+.complete-checkbox:hover {
+    background: rgba(0, 229, 160, 0.1) !important;
+}
+
+/* DELETE */
+
+.delete-quest-btn {
+    min-width: 42px !important;
+    width: 42px;
+    height: 42px;
+
+    padding: 0 !important;
+
+    border: 1px solid #ff4d73 !important;
+    border-radius: 9px !important;
+
+    color: #ff4d73 !important;
+
+    background: rgba(255, 77, 115, 0.05) !important;
+
+    transition: 0.2s !important;
+}
+
+.delete-quest-btn:hover {
+    background: rgba(255, 77, 115, 0.15) !important;
+    transform: scale(1.08);
+}
+
+/* =========================
+   EMPTY QUEST
+========================= */
+
+.empty-quests {
+    text-align: center;
+
+    padding: 55px 20px;
+
+    border: 1px dashed #304b80;
+    border-radius: 14px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(50, 75, 130, 0.15),
+            transparent
+        );
+}
+
+.chest {
+    font-size: 55px;
+
+    margin-bottom: 10px;
+
+    filter: drop-shadow(
+        0 0 15px rgba(255, 209, 102, 0.4)
+    );
+}
+
+.empty-quests h3 {
+    margin: 0 0 7px;
+    font-size: 20px;
+}
+
+.empty-quests p {
+    margin: 0;
+    color: #7583a6;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.game-footer {
+    max-width: 1100px;
+    margin: 30px auto 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+
+    gap: 15px;
+
+    color: #667596;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
 }
 
-.todo-container {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
+.game-footer span {
+    color: #374768;
 }
 
-.task-form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
+/* =========================
+   MOBILE
+========================= */
 
-.task-input {
-    flex-grow: 1;
-}
+@media (max-width: 700px) {
 
-.add-task-btn, .delete-task-btn {
-    flex-shrink: 0;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-    transition: transform 0.1s ease-in-out;
-}
+    .game-app {
+        padding: 20px 12px;
+    }
 
-.add-task-btn:hover, .delete-task-btn:hover {
-    transform: scale(1.05);
-}
+    .game-header {
+        align-items: flex-start;
+    }
 
-.tasks-list {
-    margin-top: 10px;
-}
+    .game-title {
+        font-size: 26px;
+    }
 
-.task-item {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    padding: 10px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-}
+    .game-header p {
+        font-size: 12px;
+    }
 
-.task-text {
-    flex-grow: 1;
-    margin: 0 10px;
-}
+    .level-box {
+        min-width: 75px;
+        padding: 8px 12px;
+    }
 
-.task-text.completed {
-    text-decoration: line-through;
-}
+    .level-box strong {
+        font-size: 23px;
+    }
 
+    .player-card {
+        padding: 15px;
+    }
+
+    .player-avatar {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+    }
+
+    .player-info h2 {
+        font-size: 17px;
+    }
+
+    .score-box {
+        display: none;
+    }
+
+    .quest-board {
+        padding: 15px !important;
+    }
+
+    .quest-header h2 {
+        font-size: 18px;
+    }
+
+    .quest-form {
+        flex-direction: column;
+    }
+
+    .add-quest-btn {
+        height: 48px !important;
+    }
+
+    .quest-item {
+        padding: 9px !important;
+    }
+
+    .quest-number {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+
+    .quest-icon {
+        width: 38px;
+        height: 38px;
+        margin-right: 8px;
+    }
+
+    .quest-text {
+        font-size: 14px;
+    }
+
+    .delete-quest-btn {
+        width: 36px;
+        min-width: 36px !important;
+        height: 36px;
+    }
+
+    .game-footer {
+        flex-wrap: wrap;
+        font-size: 9px;
+        gap: 8px;
+    }
+}
